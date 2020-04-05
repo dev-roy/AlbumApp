@@ -16,6 +16,7 @@ class CollectionViewController: UIViewController, NVActivityIndicatorViewable {
     
     // MARK: - Properties
     @IBOutlet weak var albumCollection: UICollectionView!
+    var albumViewModels = [AlbumViewModel]()
     var albums = [Album]()
     var isLoading = false
     
@@ -27,10 +28,11 @@ class CollectionViewController: UIViewController, NVActivityIndicatorViewable {
     
     // MARK: - Networking
     func loadAlbums() {
-       startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
+        startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
         NetworkManager.shared.fetchAlbums { (success, albums) in
             if success {
                 self.albums = albums
+                self.albumViewModels = albums.map({return AlbumViewModel(album: $0)})
                 DispatchQueue.main.async {
                     self.albumCollection.reloadData()
                     self.stopAnimating()
@@ -46,7 +48,7 @@ class CollectionViewController: UIViewController, NVActivityIndicatorViewable {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailFromCollection" {
             if let indexPath = albumCollection.indexPath(for: sender as! UICollectionViewCell) {
-                let album = albums[indexPath.row]
+                let album = albumViewModels[indexPath.row]
                 let controller = segue.destination as! AlbumDetailViewController
                 controller.detailAlbum = album
             }
@@ -61,12 +63,12 @@ class CollectionViewController: UIViewController, NVActivityIndicatorViewable {
 extension CollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albums.count
+        return albumViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath) as! AlbumCollectionViewCell
-        let url = URL(string: albums[indexPath.row].thumbnailURL)
+        let url = URL(string: albumViewModels[indexPath.row].thumbnailURL)
         DispatchQueue.main.async {
             if let imageURL = url {
                 cell.albumImage.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge

@@ -16,7 +16,7 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet weak var albumTitle: UILabel!
     @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var doneButton: UIButton!
-    var detailAlbum: Album? {
+    var detailAlbum: AlbumViewModel? {
         didSet {
             configureView()
         }

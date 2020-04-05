@@ -14,7 +14,7 @@ import NVActivityIndicatorView
 
 class TableViewController: UIViewController, NVActivityIndicatorViewable {
     // MARK: - Properties
-    var albums = [Album]()
+    var albumViewModels = [AlbumViewModel]()
     @IBOutlet weak var albumsTableView: UITableView!
     
     // MARK: - Init
@@ -27,7 +27,7 @@ class TableViewController: UIViewController, NVActivityIndicatorViewable {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = albumsTableView.indexPathForSelectedRow {
-                let album = albums[indexPath.row]
+                let album = albumViewModels[indexPath.row]
                 let controller = segue.destination as! AlbumDetailViewController
                 controller.detailAlbum = album
             }
@@ -36,10 +36,10 @@ class TableViewController: UIViewController, NVActivityIndicatorViewable {
     
     // MARK: - Networking
     func loadAlbums() {
-       startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
+        startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
         NetworkManager.shared.fetchAlbums { (success, albums) in
             if success {
-                self.albums = albums
+                self.albumViewModels = albums.map({return AlbumViewModel(album: $0)})
                 DispatchQueue.main.async {
                     self.albumsTableView.reloadData()
                     self.stopAnimating()
@@ -58,17 +58,17 @@ class TableViewController: UIViewController, NVActivityIndicatorViewable {
 // MARK: - TableView methods
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albums.count
+        return albumViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-        let imageURL: URL? = URL(string: albums[indexPath.row].thumbnailURL)
+        let imageURL: URL? = URL(string: albumViewModels[indexPath.row].thumbnailURL)
         if let url = imageURL {
             cell.albumImage.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
             cell.albumImage.sd_setImage(with: url, placeholderImage: UIImage(named: "white"))
         }
-        cell.albumTitle.text = albums[indexPath.row].title
+        cell.albumTitle.text = albumViewModels[indexPath.row].title
         return cell
     }
 }
