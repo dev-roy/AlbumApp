@@ -10,5 +10,6 @@ target 'AlbumApp' do
   pod 'SwiftyJSON'
   pod 'SDWebImage'
   pod 'NVActivityIndicatorView'
+  pod 'Lightbox'
   
 end

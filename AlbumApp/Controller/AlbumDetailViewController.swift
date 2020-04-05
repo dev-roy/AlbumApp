@@ -8,12 +8,16 @@
 
 import UIKit
 import SDWebImage
+import Lightbox
 
 class AlbumDetailViewController: UIViewController {
     
     // MARK: - Properties
     @IBOutlet weak var detailAlbumImage: UIImageView!
     @IBOutlet weak var albumTitle: UILabel!
+    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageButtonTopConstraint: NSLayoutConstraint!    
+    @IBOutlet weak var doneButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var doneButton: UIButton!
     var detailAlbum: AlbumViewModel? {
@@ -27,6 +31,7 @@ class AlbumDetailViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         configureView()
+        detectOrientation()
     }
     
     func configureView() {
@@ -51,12 +56,41 @@ class AlbumDetailViewController: UIViewController {
     
     // MARK: - Handlers
     @objc func rotated() {
+        detectOrientation()
+    }
+    
+    func setPortraitModeConstraints() {
+        titleTopConstraint.constant = 35
+        imageTopConstraint.constant = 100
+        imageButtonTopConstraint.constant = 100
+        doneButtonTopConstraint.constant = 45
+    }
+    
+    func setLandscapeModeConstraints() {
+        titleTopConstraint.constant = -100
+        imageTopConstraint.constant = 50
+        imageButtonTopConstraint.constant = 50
+        doneButtonTopConstraint.constant = 18
+    }
+    
+    func detectOrientation() {
         if UIDevice.current.orientation.isLandscape {
-            titleTopConstraint.constant = -100
-            doneButton.isHidden = false
+            setLandscapeModeConstraints()
         } else {
-            titleTopConstraint.constant = 35
-            doneButton.isHidden = true
+            setPortraitModeConstraints()
+        }
+    }
+    
+    @IBAction func detailImagePressed(_ sender: Any) {
+        if let album = detailAlbum {
+            let imageURL: URL? = URL(string: album.url)
+            if let url = imageURL {
+                let images = [LightboxImage(imageURL: url)]
+                let controller = LightboxController(images: images)
+                controller.modalPresentationStyle = .fullScreen
+                present(controller, animated: true, completion: nil)
+            }
+            
         }
     }
     

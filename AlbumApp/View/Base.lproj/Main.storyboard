@@ -146,26 +146,36 @@
         <!--Album Detail View Controller-->
         <scene sceneID="LwD-Ex-GlE">
             <objects>
-                <viewController id="isL-so-x3W" customClass="AlbumDetailViewController" customModule="AlbumApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="isL-so-x3W" customClass="AlbumDetailViewController" customModule="AlbumApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iFx-0e-6IO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDU-Ch-aIi">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3k-oS-4NJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="406" height="768.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="406" height="818"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jnz-nD-fxr">
-                                                <rect key="frame" x="53" y="50" width="300" height="300"/>
+                                                <rect key="frame" x="53" y="100" width="300" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="M8I-HK-sLO"/>
                                                     <constraint firstAttribute="width" constant="300" id="lCO-wh-PgT"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd0-ha-Oa8">
+                                                <rect key="frame" x="53" y="100" width="300" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="9x9-dC-fyh"/>
+                                                    <constraint firstAttribute="height" constant="300" id="lCm-Qf-nIy"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="detailImagePressed:" destination="isL-so-x3W" eventType="touchUpInside" id="1RI-Kz-r32"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXX-D1-Ex6">
-                                                <rect key="frame" x="53" y="385" width="300" height="26.5"/>
+                                                <rect key="frame" x="53" y="435" width="300" height="26.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="k6p-Ke-mZ6"/>
                                                 </constraints>
@@ -173,16 +183,22 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cs-jr-BIa">
-                                                <rect key="frame" x="331.5" y="19" width="49" height="28"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cs-jr-BIa">
+                                                <rect key="frame" x="352" y="40" width="49" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="2Ko-2K-TD7"/>
                                                     <constraint firstAttribute="width" constant="49" id="cSG-TD-D6j"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <state key="normal" title="Done">
-                                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="doneButtonPressed:" destination="isL-so-x3W" eventType="touchUpInside" id="TPF-UC-R9H"/>
                                                 </connections>
@@ -190,12 +206,14 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="Jnz-nD-fxr" firstAttribute="top" secondItem="Q3k-oS-4NJ" secondAttribute="top" constant="50" id="5pc-wR-dq8"/>
+                                            <constraint firstItem="Jnz-nD-fxr" firstAttribute="top" secondItem="Q3k-oS-4NJ" secondAttribute="top" constant="100" id="5pc-wR-dq8"/>
+                                            <constraint firstItem="nd0-ha-Oa8" firstAttribute="top" secondItem="Q3k-oS-4NJ" secondAttribute="top" constant="100" id="Av7-D5-E03"/>
                                             <constraint firstItem="RXX-D1-Ex6" firstAttribute="centerX" secondItem="Q3k-oS-4NJ" secondAttribute="centerX" id="JPb-bb-a1P"/>
-                                            <constraint firstItem="4cs-jr-BIa" firstAttribute="top" secondItem="Q3k-oS-4NJ" secondAttribute="top" constant="19" id="To2-Zb-1ME"/>
+                                            <constraint firstItem="4cs-jr-BIa" firstAttribute="top" secondItem="Q3k-oS-4NJ" secondAttribute="top" constant="40" id="To2-Zb-1ME"/>
                                             <constraint firstItem="Jnz-nD-fxr" firstAttribute="centerX" secondItem="Q3k-oS-4NJ" secondAttribute="centerX" id="ULz-NA-Tri"/>
                                             <constraint firstItem="RXX-D1-Ex6" firstAttribute="top" secondItem="Jnz-nD-fxr" secondAttribute="bottom" constant="35" id="fF2-dp-hP3"/>
-                                            <constraint firstAttribute="trailing" secondItem="4cs-jr-BIa" secondAttribute="trailing" constant="25.5" id="xVc-hG-TyY"/>
+                                            <constraint firstAttribute="trailing" secondItem="4cs-jr-BIa" secondAttribute="trailing" constant="5" id="xVc-hG-TyY"/>
+                                            <constraint firstItem="nd0-ha-Oa8" firstAttribute="centerX" secondItem="Q3k-oS-4NJ" secondAttribute="centerX" id="yEz-C2-ObN"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -225,12 +243,15 @@
                         <outlet property="albumTitle" destination="RXX-D1-Ex6" id="be0-7D-D73"/>
                         <outlet property="detailAlbumImage" destination="Jnz-nD-fxr" id="L1V-dE-di8"/>
                         <outlet property="doneButton" destination="4cs-jr-BIa" id="m5s-Qp-7Bw"/>
+                        <outlet property="doneButtonTopConstraint" destination="To2-Zb-1ME" id="3Bu-3g-Hgv"/>
+                        <outlet property="imageButtonTopConstraint" destination="Av7-D5-E03" id="aIR-32-Rt9"/>
+                        <outlet property="imageTopConstraint" destination="5pc-wR-dq8" id="7IK-fz-d0T"/>
                         <outlet property="titleTopConstraint" destination="fF2-dp-hP3" id="ixw-iV-MfN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKw-ef-gex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1273.6607142857142" y="-155.07246376811597"/>
+            <point key="canvasLocation" x="1272.4637681159422" y="-155.35714285714286"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="l4g-iM-d7l">

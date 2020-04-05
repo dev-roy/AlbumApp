@@ -21,10 +21,7 @@ class NetworkManager {
                     let json: JSON = JSON(data)
                     var albumsArray = [Album]()
                     for (_, object) in json {
-                        let album = Album()
-                        album.title = object["title"].stringValue
-                        album.url = object["url"].stringValue
-                        album.thumbnailURL = object["thumbnailUrl"].stringValue
+                        let album = Album(title: object["title"].stringValue, thumbnailURL: object["thumbnailUrl"].stringValue, url: object["url"].stringValue)
                         albumsArray.append(album)
                     }
                     completion(true, albumsArray)

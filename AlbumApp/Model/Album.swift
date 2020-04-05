@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Album {
-    var title = ""
-    var thumbnailURL = ""
-    var url = ""
+struct Album {
+    var title: String
+    var thumbnailURL: String
+    var url: String
 }

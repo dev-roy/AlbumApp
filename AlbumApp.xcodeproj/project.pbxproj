@@ -21,7 +21,18 @@
 		3A47C8C02437A6F6000D786F /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8BF2437A6F6000D786F /* AlbumCollectionViewCell.swift */; };
 		3A47C8C8243954F0000D786F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8C7243954F0000D786F /* NetworkManager.swift */; };
 		3A47C8CC243977E5000D786F /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8CB243977E5000D786F /* AlbumViewModel.swift */; };
+		3A47C8D5243A3AAD000D786F /* AlbumAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8D4243A3AAD000D786F /* AlbumAppTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A47C8D7243A3AAD000D786F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A47C88F2437718B000D786F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A47C8962437718B000D786F;
+			remoteInfo = AlbumApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2F12CAF4484CF7D42459C0B7 /* Pods_AlbumApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlbumApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +51,9 @@
 		3A47C8BF2437A6F6000D786F /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A47C8C7243954F0000D786F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3A47C8CB243977E5000D786F /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		3A47C8D2243A3AAD000D786F /* AlbumAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A47C8D4243A3AAD000D786F /* AlbumAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumAppTests.swift; sourceTree = "<group>"; };
+		3A47C8D6243A3AAD000D786F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83AE2B8EDED5AC88FE11608A /* Pods-AlbumApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbumApp.release.xcconfig"; path = "Target Support Files/Pods-AlbumApp/Pods-AlbumApp.release.xcconfig"; sourceTree = "<group>"; };
 		8A2BCD61DAA7C91224D5D16E /* Pods-AlbumApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbumApp.debug.xcconfig"; path = "Target Support Files/Pods-AlbumApp/Pods-AlbumApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +64,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D004BA01F0CAD21DDAD456C /* Pods_AlbumApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A47C8CF243A3AAD000D786F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				3A47C8992437718B000D786F /* AlbumApp */,
+				3A47C8D3243A3AAD000D786F /* AlbumAppTests */,
 				3A47C8982437718B000D786F /* Products */,
 				3386AC3267089C92AE064A71 /* Pods */,
 				58EEAC1A150032FA3F1FCE36 /* Frameworks */,
@@ -79,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				3A47C8972437718B000D786F /* AlbumApp.app */,
+				3A47C8D2243A3AAD000D786F /* AlbumAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +167,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3A47C8D3243A3AAD000D786F /* AlbumAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A47C8D4243A3AAD000D786F /* AlbumAppTests.swift */,
+				3A47C8D6243A3AAD000D786F /* Info.plist */,
+			);
+			path = AlbumAppTests;
+			sourceTree = "<group>";
+		};
 		58EEAC1A150032FA3F1FCE36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +206,24 @@
 			productReference = 3A47C8972437718B000D786F /* AlbumApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3A47C8D1243A3AAD000D786F /* AlbumAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A47C8D9243A3AAE000D786F /* Build configuration list for PBXNativeTarget "AlbumAppTests" */;
+			buildPhases = (
+				3A47C8CE243A3AAD000D786F /* Sources */,
+				3A47C8CF243A3AAD000D786F /* Frameworks */,
+				3A47C8D0243A3AAD000D786F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A47C8D8243A3AAD000D786F /* PBXTargetDependency */,
+			);
+			name = AlbumAppTests;
+			productName = AlbumAppTests;
+			productReference = 3A47C8D2243A3AAD000D786F /* AlbumAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -186,6 +236,10 @@
 				TargetAttributes = {
 					3A47C8962437718B000D786F = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					3A47C8D1243A3AAD000D786F = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 3A47C8962437718B000D786F;
 					};
 				};
 			};
@@ -203,6 +257,7 @@
 			projectRoot = "";
 			targets = (
 				3A47C8962437718B000D786F /* AlbumApp */,
+				3A47C8D1243A3AAD000D786F /* AlbumAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -215,6 +270,13 @@
 				3A47C8A7243771A1000D786F /* LaunchScreen.storyboard in Resources */,
 				3A47C8A4243771A1000D786F /* Assets.xcassets in Resources */,
 				3A47C8A22437718B000D786F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A47C8D0243A3AAD000D786F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +342,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3A47C8CE243A3AAD000D786F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A47C8D5243A3AAD000D786F /* AlbumAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A47C8D8243A3AAD000D786F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A47C8962437718B000D786F /* AlbumApp */;
+			targetProxy = 3A47C8D7243A3AAD000D786F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A47C8A02437718B000D786F /* Main.storyboard */ = {
@@ -454,6 +532,48 @@
 			};
 			name = Release;
 		};
+		3A47C8DA243A3AAE000D786F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66NQL9BXQP;
+				INFOPLIST_FILE = AlbumAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlbumAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbumApp.app/AlbumApp";
+			};
+			name = Debug;
+		};
+		3A47C8DB243A3AAE000D786F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66NQL9BXQP;
+				INFOPLIST_FILE = AlbumAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlbumAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbumApp.app/AlbumApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -471,6 +591,15 @@
 			buildConfigurations = (
 				3A47C8AC243771A1000D786F /* Debug */,
 				3A47C8AD243771A1000D786F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A47C8D9243A3AAE000D786F /* Build configuration list for PBXNativeTarget "AlbumAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A47C8DA243A3AAE000D786F /* Debug */,
+				3A47C8DB243A3AAE000D786F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
