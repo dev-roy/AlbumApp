@@ -20,50 +20,38 @@ class TableViewController: UIViewController, NVActivityIndicatorViewable {
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAlbums()
+        loadAlbums()
+    }
+    
+    // MARK: - Handlers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = albumsTableView.indexPathForSelectedRow {
+                let album = albums[indexPath.row]
+                let controller = segue.destination as! AlbumDetailViewController
+                controller.detailAlbum = album
+            }
+        }
     }
     
     // MARK: - Networking
-    func getAlbums() {
+    func loadAlbums() {
        startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
-            DispatchQueue.global(qos: .background).async {
-            AF.request("http://jsonplaceholder.typicode.com/photos").validate().responseJSON { (response) in
-                switch response.result {
-                case .success(let data):
-                    let json: JSON = JSON(data)
-                    for (_, object) in json {
-                        let album = Album()
-                        album.title = object["title"].stringValue
-                        album.url = object["url"].stringValue
-                        album.thumbnailURL = object["thumbnailUrl"].stringValue
-                        self.albums.append(album)
-                        print(album.thumbnailURL, "test")
-                    }
-                    DispatchQueue.main.async {
-                        self.albumsTableView.reloadData()
-                        self.stopAnimating()
-                    }
-                    
-                    case .failure(let error):
-                        print(error)
-                        self.stopAnimating()
-                        break
-                    }
+        NetworkManager.shared.fetchAlbums { (success, albums) in
+            if success {
+                self.albums = albums
+                DispatchQueue.main.async {
+                    self.albumsTableView.reloadData()
+                    self.stopAnimating()
                 }
+            } else {
+                print("error")
+                self.stopAnimating()
             }
-    }
-}
-
-// MARK: - Handlers
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showDetail" {
-        if let indexPath = albumsTableView.indexPathForSelectedRow {
-            let album = albums[indexPath.row]
-            let controller = segue.destination as! AlbumDetailViewController
-            controller.detailAlbum = album
         }
     }
 }
+
 
 // MARK: - Extensions
 

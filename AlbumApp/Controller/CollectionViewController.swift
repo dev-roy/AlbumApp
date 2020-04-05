@@ -22,36 +22,24 @@ class CollectionViewController: UIViewController, NVActivityIndicatorViewable {
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAlbums()
+        loadAlbums()
     }
     
     // MARK: - Networking
-    func getAlbums() {
-        startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
-            DispatchQueue.global(qos: .background).async {
-            AF.request("http://jsonplaceholder.typicode.com/photos").validate().responseJSON { (response) in
-                switch response.result {
-                case .success(let data):
-                    let json: JSON = JSON(data)
-                    for (_, object) in json {
-                        let album = Album()
-                        album.title = object["title"].stringValue
-                        album.url = object["url"].stringValue
-                        album.thumbnailURL = object["thumbnailUrl"].stringValue
-                        self.albums.append(album)
-                    }
-                    DispatchQueue.main.async {
-                        self.albumCollection.reloadData()
-                        self.stopAnimating()
-                    }
-                    
-                    case .failure(let error):
-                        print(error)
-                        self.stopAnimating()
-                        break
-                    }
+    func loadAlbums() {
+       startAnimating(CGSize(width: 60, height: 60), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.red)
+        NetworkManager.shared.fetchAlbums { (success, albums) in
+            if success {
+                self.albums = albums
+                DispatchQueue.main.async {
+                    self.albumCollection.reloadData()
+                    self.stopAnimating()
                 }
+            } else {
+                print("error")
+                self.stopAnimating()
             }
+        }
     }
     
     // MARK: - Handlers

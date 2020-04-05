@@ -19,6 +19,7 @@
 		3A47C8B82437902B000D786F /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8B72437902B000D786F /* AlbumCell.swift */; };
 		3A47C8BA24379B3B000D786F /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8B924379B3B000D786F /* AlbumDetailViewController.swift */; };
 		3A47C8C02437A6F6000D786F /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8BF2437A6F6000D786F /* AlbumCollectionViewCell.swift */; };
+		3A47C8C8243954F0000D786F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47C8C7243954F0000D786F /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3A47C8B72437902B000D786F /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		3A47C8B924379B3B000D786F /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 		3A47C8BF2437A6F6000D786F /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A47C8C7243954F0000D786F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		83AE2B8EDED5AC88FE11608A /* Pods-AlbumApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbumApp.release.xcconfig"; path = "Target Support Files/Pods-AlbumApp/Pods-AlbumApp.release.xcconfig"; sourceTree = "<group>"; };
 		8A2BCD61DAA7C91224D5D16E /* Pods-AlbumApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbumApp.debug.xcconfig"; path = "Target Support Files/Pods-AlbumApp/Pods-AlbumApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				3A47C8B024378C8A000D786F /* Controller */,
 				3A47C8AE2437762F000D786F /* Model */,
 				3A47C8AF24377636000D786F /* View */,
+				3A47C8C6243954D1000D786F /* Networking */,
 				3A47C89A2437718B000D786F /* AppDelegate.swift */,
 				3A47C89C2437718B000D786F /* SceneDelegate.swift */,
 				3A47C8A3243771A1000D786F /* Assets.xcassets */,
@@ -120,6 +123,14 @@
 				3A47C8B924379B3B000D786F /* AlbumDetailViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3A47C8C6243954D1000D786F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3A47C8C7243954F0000D786F /* NetworkManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		58EEAC1A150032FA3F1FCE36 /* Frameworks */ = {
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A47C8C8243954F0000D786F /* NetworkManager.swift in Sources */,
 				3A47C8C02437A6F6000D786F /* AlbumCollectionViewCell.swift in Sources */,
 				3A47C89B2437718B000D786F /* AppDelegate.swift in Sources */,
 				3A47C89D2437718B000D786F /* SceneDelegate.swift in Sources */,
