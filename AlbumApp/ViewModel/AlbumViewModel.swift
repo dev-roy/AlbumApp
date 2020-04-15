@@ -18,4 +18,6 @@ struct AlbumViewModel {
         self.url = album.url
         self.thumbnailURL = album.thumbnailURL
     }
+    
+    
 }

@@ -36,6 +36,8 @@ class CollectionViewController: UIViewController, NVActivityIndicatorViewable {
                 DispatchQueue.main.async {
                     self.albumCollection.reloadData()
                     self.stopAnimating()
+                    let mainThread = Thread.isMainThread
+                    print(mainThread, "ismainthread")
                 }
             } else {
                 print("error")
