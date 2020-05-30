@@ -13,3 +13,7 @@ struct Album {
     var thumbnailURL: String
     var url: String
 }
+
+struct Dummy {
+    
+}
