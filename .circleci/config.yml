@@ -1,10 +1,8 @@
 version: 2.1
 jobs:
-  build:
+  build-and-test:
     macos:
       xcode: 11.5.0
-    
-  build-and-test:
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: tests
