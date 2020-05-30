@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   macos:
-    xcode: "11.5.0"
+    xcode: 11.5.0
     
   build-and-test:
     environment:
